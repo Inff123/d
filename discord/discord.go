@@ -59,7 +59,7 @@ func IntialiseClient() {
 	}
 }
 
-func setStatus(s *discordgo.Session) {
+/*func setStatus(s *discordgo.Session) {
     err := s.UpdateStatusComplex(discordgo.UpdateStatusData{
         IdleSince: nil,
         Game: &discordgo.Game{
@@ -73,7 +73,7 @@ func setStatus(s *discordgo.Session) {
         aid.Print("(discord) failed to set status:", err)
     }
 }
-
+*/
 func (c *DiscordClient) UnregisterCommands() {
 	commands := c.GetRegisteredCommands()
 	if commands == nil {
@@ -139,7 +139,7 @@ func (c *DiscordClient) GetGlobalRegisteredCommands() []*discordgo.ApplicationCo
 
 func (c *DiscordClient) readyHandler(s *discordgo.Session, event *discordgo.Ready) {
     aid.Print("(discord) bot is ready")
-    setStatus(s)
+  //  setStatus(s)
 }
 
 func (c *DiscordClient) interactionHandler(s *discordgo.Session, i *discordgo.InteractionCreate) {
