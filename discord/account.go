@@ -29,19 +29,8 @@ func createHandler(s *discordgo.Session, i *discordgo.InteractionCreate) {
                     },
                 },
             },
-            &discordgo.ActionsRow{
-                Components: []discordgo.MessageComponent{
-                    discordgo.TextInput{
-                        CustomID:    "password",
-                        Label:       "PASSWORD",
-                        Style:       discordgo.TextInputShort,
-                        Placeholder: "Enter your account password! (Dont use your discord password! 6 characters needed and 20 Characters maximum)",
-                        Required:    true,
-                        MaxLength:   20,
-                        MinLength:   6, 
-                    },
-                },
-            },
+                
+        
         },
     }
 
