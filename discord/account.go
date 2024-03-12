@@ -34,7 +34,7 @@ func createHandler(s *discordgo.Session, i *discordgo.InteractionCreate) {
                     discordgo.TextInput{
                         CustomID:    "password",
                         Label:       "PASSWORD",
-                        Style:       discordgo.TextInputPassword,
+                        Style:       discordgo.TextInputShort,
                         Placeholder: "Enter your account password! (Dont use your discord password! 6 characters needed and 20 Characters maximum)",
                         Required:    true,
                         MaxLength:   20,
