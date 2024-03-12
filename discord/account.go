@@ -5,32 +5,46 @@ import (
 	"time"
 
 	"github.com/bwmarrin/discordgo"
-	"github.com/ectrc/snow/aid"
-	"github.com/ectrc/snow/fortnite"
-	"github.com/ectrc/snow/person"
-	"github.com/ectrc/snow/storage"
+	"github.com/ProjectClimbFN/snow/aid"
+	"github.com/ProjectClimbFN/snow/fortnite"
+	"github.com/ProjectClimbFN/snow/person"
+	"github.com/ProjectClimbFN/snow/storage"
 )
 
 func createHandler(s *discordgo.Session, i *discordgo.InteractionCreate) {
-	modal := &discordgo.InteractionResponseData{
-		CustomID: "create://" + i.Member.User.ID,
-		Title:    "Create an account",
-		Components: []discordgo.MessageComponent{
-			&discordgo.ActionsRow{
-				Components: []discordgo.MessageComponent{
-					discordgo.TextInput{
-						CustomID:    "display",
-						Label:       "DISPLAY NAME",
-						Style:       discordgo.TextInputShort,
-						Placeholder: "Enter your crazy display name here!",
-						Required:    true,
-						MaxLength:   20,
-						MinLength:   2,
-					},
-				},
-			},
-		},
-	}
+    modal := &discordgo.InteractionResponseData{
+        CustomID: "create://" + i.Member.User.ID,
+        Title:    "Create an account",
+        Components: []discordgo.MessageComponent{
+            &discordgo.ActionsRow{
+                Components: []discordgo.MessageComponent{
+                    discordgo.TextInput{
+                        CustomID:    "username",
+                        Label:       "USERNAME",
+                        Style:       discordgo.TextInputShort,
+                        Placeholder: "Enter your username here!",
+                        Required:    true,
+                        MaxLength:   20,
+                        MinLength:   2,
+                    },
+                },
+            },
+            &discordgo.ActionsRow{
+                Components: []discordgo.MessageComponent{
+                    discordgo.TextInput{
+                        CustomID:    "password",
+                        Label:       "PASSWORD",
+                        Style:       discordgo.TextInputPassword,
+                        Placeholder: "Enter your account password! (Dont use your discord password! 6 characters needed and 20 Characters maximum)",
+                        Required:    true,
+                        MaxLength:   20,
+                        MinLength:   6, // Adjust minimum length as needed
+                    },
+                },
+            },
+        },
+    }
+}
 
 	s.InteractionRespond(i.Interaction, &discordgo.InteractionResponse{
 		Type: discordgo.InteractionResponseModal,
