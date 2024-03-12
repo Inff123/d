@@ -4,7 +4,7 @@ import (
 	"strings"
 
 	"github.com/bwmarrin/discordgo"
-	"github.com/ectrc/snow/aid"
+	"github.com/ProjectClimbFN/snow/aid"
 )
 
 type DiscordCommand struct {
@@ -57,6 +57,21 @@ func IntialiseClient() {
 	if err != nil {
 		aid.Print("(discord) failed to connect; will be disabled")
 	}
+}
+
+func setStatus(s *discordgo.Session) {
+    err := s.UpdateStatusComplex(discordgo.UpdateStatusData{
+        IdleSince: nil,
+        Game: &discordgo.Game{
+            Name: "Development",
+            Type: discordgo.GameTypeWatching,
+        },
+        AFK:    false,
+        Status: "",
+    })
+    if err != nil {
+        aid.Print("(discord) failed to set status:", err)
+    }
 }
 
 func (c *DiscordClient) UnregisterCommands() {
@@ -123,7 +138,8 @@ func (c *DiscordClient) GetGlobalRegisteredCommands() []*discordgo.ApplicationCo
 }
 
 func (c *DiscordClient) readyHandler(s *discordgo.Session, event *discordgo.Ready) {
-	aid.Print("(discord) bot is ready")
+    aid.Print("(discord) bot is ready")
+    setStatus(s)
 }
 
 func (c *DiscordClient) interactionHandler(s *discordgo.Session, i *discordgo.InteractionCreate) {
