@@ -38,13 +38,13 @@ func createHandler(s *discordgo.Session, i *discordgo.InteractionCreate) {
                         Placeholder: "Enter your account password! (Dont use your discord password! 6 characters needed and 20 Characters maximum)",
                         Required:    true,
                         MaxLength:   20,
-                        MinLength:   6, // Adjust minimum length as needed
+                        MinLength:   6, 
                     },
                 },
             },
         },
     }
-}
+
 
 	s.InteractionRespond(i.Interaction, &discordgo.InteractionResponse{
 		Type: discordgo.InteractionResponseModal,
