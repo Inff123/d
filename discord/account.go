@@ -93,7 +93,7 @@ func createModalHandler(s *discordgo.Session, i *discordgo.InteractionCreate) {
 	s.InteractionRespond(i.Interaction, &discordgo.InteractionResponse{
 		Type: discordgo.InteractionResponseChannelMessageWithSource,
 		Data: &discordgo.InteractionResponseData{
-			Content: "Your account has been created with the display name: `" + account.DisplayName + "`",
+			Content: "Your account has been created with the display name: `" + account.DisplayName + "` Have fun Playing",
 		},
 	})
 }
