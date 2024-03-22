@@ -24,7 +24,7 @@ func createHandler(s *discordgo.Session, i *discordgo.InteractionCreate) {
                         Style:       discordgo.TextInputShort,
                         Placeholder: "Enter your username here!",
                         Required:    true,
-                        MaxLength:   20,
+                        MaxLength:   25,
                         MinLength:   2,
                     },
                 },
